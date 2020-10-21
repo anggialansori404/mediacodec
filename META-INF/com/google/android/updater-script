@@ -1,0 +1,44 @@
+ui_print("****************************************");
+ui_print("*       black video fix by thago  *");
+ui_print("*                *");
+ui_print("****************************************");
+ui_print("");
+ui_print("");
+
+show_progress(1.000000, 0);
+ui_print("Mounting filesstems...");
+mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/cust", "/vendor");
+run_program("/sbin/busybox", "mount", "/system");
+set_progress(0.100000);
+ui_print("Extracting files...");
+package_extract_dir("vendor", "/vendor");
+#package_extract_dir("system", "/system");
+set_progress(0.300000);
+#ui_print("Setting permissions...");
+#set_perm(0, 0, 0644, "/system/etc/prop.default");
+# set_perm(0, 0, 0775, "/vendor/bin/hw/android.hardware.thermal@1.0-service");
+# set_perm(0, 0, 0644, "/vendor/etc/init/hw/init.qcom.rc");
+#set_perm(0, 0, 0644, "/vendor/etc/init/imsdatadaemon.rc");
+#set_perm(0, 0, 0644, "/vendor/etc/init/ims_rtp_daemon.rc");
+#set_perm(0, 0, 0644, "/vendor/etc/init/imsqmidaemon.rc");
+#set_perm(0, 0, 0644, "/vendor/etc/init/qcrild.rc");
+#set_perm(0, 0, 0755, "/vendor/bin/init.qcom.post_boot.sh");
+#set_perm(0, 0, 0755, 0644, "/vendor/bin/init.qcom.usb.sh");
+#set_perm(0, 0, 0644, "/vendor/overay/framework-res__auto_generated_rro_vendor.apk");
+
+
+set_progress(0.400000);
+set_progress(0.500000);
+set_progress(0.700000);
+
+# Unmounting filesystems...
+run_program("/sbin/busybox", "umount", "/vendor");
+run_program("/sbin/busybox", "umount", "/system");
+set_progress(0.900000);
+
+
+set_progress(1.000000);
+ui_print("****************************************");
+ui_print("*          @thagooo Thago           *");
+ui_print("****************************************");
+
